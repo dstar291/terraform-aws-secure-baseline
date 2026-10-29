@@ -18,8 +18,10 @@ terraform.rc
 *.tfvars.json
 !*.tfvars.example
 
-# Note: .terraform.lock.hcl is NOT ignored on purpose. Commit it in examples/
-# so provider hashes are reproducible.
+# Lock file: ignored for the module itself (a module should work with any
+# provider version in its allowed range) but NOT for examples/, where it is
+# committed so provider hashes are reproducible.
+/.terraform.lock.hcl
 
 # Private working notes (kept local only)
 TASKS.md

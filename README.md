@@ -41,14 +41,24 @@ the plan before you apply it, and review the code before you trust it.
 
 ## Development
 
+Requirements: Terraform 1.9+, [tflint](https://github.com/terraform-linters/tflint),
+Python (for pre-commit).
+
 ```bash
 pip install pre-commit
 pre-commit install
+tflint --init          # one-time: downloads the tflint rulesets
 pre-commit run --all-files
+
+terraform init -backend=false
+terraform validate
+terraform test
 ```
 
 Hooks: whitespace and YAML checks, `terraform fmt`, `tflint` and `gitleaks`
 (secret scanning). Never commit credentials, state files or `*.tfvars`.
+
+Conventions for names and tags are in [docs/tagging.md](docs/tagging.md).
 
 ## How this repository is built
 
