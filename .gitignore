@@ -1,0 +1,42 @@
+# Terraform working data and state: state can contain secrets, never commit it
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfplan
+tfplan
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Variable files hold real values. Commit only *.tfvars.example
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Note: .terraform.lock.hcl is NOT ignored on purpose. Commit it in examples/
+# so provider hashes are reproducible.
+
+# Private working notes (kept local only)
+TASKS.md
+
+# Credentials and local config
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+
+# Generated test output
+*.log
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

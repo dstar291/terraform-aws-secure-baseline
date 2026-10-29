@@ -1,0 +1,24 @@
+# Install once:  pip install pre-commit && pre-commit install
+# Run on demand: pre-commit run --all-files
+# Bump pins:     pre-commit autoupdate   (review the diff before committing)
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.109.3
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_tflint
+
+  # Secret scanning runs on every commit, before anything leaves the machine.
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
