@@ -20,6 +20,12 @@ Give a small team a safe starting point on AWS that they can deploy in about
 
 Each item is added as a small, reviewed change.
 
+## Modules
+
+| Module | Status | What it does |
+|---|---|---|
+| [`modules/vpc`](modules/vpc/README.md) | Available | VPC, public and private subnets across 2 AZs, optional NAT, locked-down default security group |
+
 ## Design principles
 
 1. **Secure defaults.** Encryption on, public access blocked, least privilege.
@@ -53,6 +59,10 @@ pre-commit run --all-files
 terraform init -backend=false
 terraform validate
 terraform test
+
+# each module is tested on its own
+terraform -chdir=modules/vpc init -backend=false
+terraform -chdir=modules/vpc test
 ```
 
 Hooks: whitespace and YAML checks, `terraform fmt`, `tflint` and `gitleaks`

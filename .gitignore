@@ -22,6 +22,7 @@ terraform.rc
 # provider version in its allowed range) but NOT for examples/, where it is
 # committed so provider hashes are reproducible.
 /.terraform.lock.hcl
+/modules/**/.terraform.lock.hcl
 
 # Private working notes (kept local only)
 TASKS.md
