@@ -25,6 +25,7 @@ Each item is added as a small, reviewed change.
 | Module | Status | What it does |
 |---|---|---|
 | [`modules/vpc`](modules/vpc/README.md) | Available | VPC, public and private subnets across 2 AZs, optional NAT, locked-down default security group |
+| [`modules/log-bucket`](modules/log-bucket/README.md) | Available | Private, encrypted, versioned S3 bucket for logs with TLS-only policy and lifecycle rules |
 
 ## Design principles
 
@@ -63,6 +64,8 @@ terraform test
 # each module is tested on its own
 terraform -chdir=modules/vpc init -backend=false
 terraform -chdir=modules/vpc test
+terraform -chdir=modules/log-bucket init -backend=false
+terraform -chdir=modules/log-bucket test
 ```
 
 Hooks: whitespace and YAML checks, `terraform fmt`, `tflint` and `gitleaks`
